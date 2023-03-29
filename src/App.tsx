@@ -2,9 +2,7 @@ import './scss/global.scss'
 import Landing from './Pages/Landing/Landing'
 import Cart from './Pages/Cart/Cart'
 import {Route, Routes} from 'react-router-dom'
-import Navbar from './Components/Navbar'
-import {useScroll} from 'framer-motion'
-
+import Navbar from './Components/Navbar/Navbar'
 
 
 function App() {
