@@ -1,6 +1,7 @@
 import './styles.scss'
 import {motion, useScroll, useTransform} from 'framer-motion'
-import Recommendations from '../../Components/Navbar/Recommendations/Recommendations'
+import Recommendations from '../../Components/Recommendations/Recommendations'
+
 
 const Landing = () => {
   let {scrollYProgress} = useScroll()

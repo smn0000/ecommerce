@@ -48,3 +48,14 @@ input{
 body{
     font-family: 'Roboto Mono', monospace;
 }
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+button{
+    font-family: inherit;
+    border: none;
+    background-color: white;
+}
