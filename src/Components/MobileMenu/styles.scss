@@ -1,0 +1,13 @@
+.mobile-menu{
+    position: absolute;
+    overflow: scroll;
+    inset: 0;
+    top:80px;
+
+    width: 100%;
+    background-color: white;
+    clip-path: inset(0px -10px -10px -10px); //Hides box-shadow from top
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+}

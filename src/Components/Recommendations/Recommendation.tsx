@@ -1,8 +1,13 @@
 import React from 'react'
 import './styles.scss'
 
+
 const Recommendation = ({isRight}:{isRight:Boolean}) => {
     const img = new URL('../../static/album.jpg',import.meta.url).href
+
+
+    
+
   return (
     <div className='recommendation'>
         {!isRight && <img src={img} alt="" />}
