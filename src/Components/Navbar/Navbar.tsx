@@ -1,41 +1,28 @@
 import './styles.scss'
-import {motion, useScroll, useMotionValueEvent, useAnimate, AnimatePresence} from 'framer-motion'
+import {motion, useScroll, useMotionValueEvent, useAnimate, AnimatePresence, AnimationScope} from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'usehooks-ts'
 import {BiMenu, BiSearch} from 'react-icons/bi'
 import {useState, useEffect, useRef} from 'react'
 import MobileMenu from '../MobileMenu/MobileMenu'
+import Search from '../Search/Search'
 
 const Navbar = () => {
-
-    function useHideOnOutsideClick(ref:any) {
+    function useHideOnOutsideClick(ref:AnimationScope<any>) {
         useEffect(() => {
-          /**
-           * Alert if clicked on outside of element
-           */
           function handleClickOutside(event:any) {
             if (ref.current && !ref.current.contains(event.target)) {
               setShowMobileMenu(false);
             }
           }
-          // Bind the event listener
           document.addEventListener("mousedown", handleClickOutside);
           document.addEventListener("touchmove", handleClickOutside);
           return () => {
-            // Unbind the event listener on clean up
             document.removeEventListener("mousedown", handleClickOutside);
             document.removeEventListener("touchmove", handleClickOutside);
           };
         }, [ref]);
       }
-
-    const isMobile = useMediaQuery('(max-width:1024px)')
-    const [showMobileMenu, setShowMobileMenu] = useState(false)
-
-    // Disables scroll when menu is open
-    const body = document.querySelector('body')
-    if(showMobileMenu && body) body.style.overflow = 'hidden'
-    else if(body) body.style.overflow = 'auto'
 
 
 
@@ -67,23 +54,48 @@ const Navbar = () => {
             transition:{duration: 50},
         },
     }
+
+    
+    const isMobile = useMediaQuery('(max-width:1024px)')
+    const [showMobileMenu, setShowMobileMenu] = useState(false)
+    const [showSearch, setShowSearch] = useState(false)
+
+    // Disables scroll when menu is open
+    const body = document.querySelector('body')
+    if(showMobileMenu && body) body.style.overflow = 'hidden'
+    else if(body) body.style.overflow = 'auto'
+
+    const handleShowMenu = () =>{
+        setShowMobileMenu(current => !current)
+        showSearch && setShowSearch(false)
+    }
+
+    const handleShowSearch = () =>{
+       setShowSearch(current => !current)
+       showMobileMenu && setShowMobileMenu(false)
+    }
+
   return (
     <>
     <motion.nav className='navbar' ref={navRef} variants={navAnimations} initial='initial'>
+         <AnimatePresence>
+            {showSearch && <Search handleClose={setShowSearch}/>}
+        </AnimatePresence>
         <AnimatePresence>
             {showMobileMenu && isMobile && <MobileMenu/>}
         </AnimatePresence>
+      
         {!isMobile &&<>
             <ul>
-                <li>Menu</li>
-                <li>Search</li>
+                <li><button>Menu</button></li>
+                <li><button onClick={() => setShowSearch(current => !current)}>Search</button> </li>
             </ul>
         </>}
         
         {isMobile && <>
         
             <div className='hamburger'>
-                <button onClick={() => setShowMobileMenu(current => !current)}><BiMenu size={50}/></button> 
+                <button onClick={handleShowMenu}><BiMenu size={50}/></button> 
             </div>
 
         </>}
@@ -93,12 +105,12 @@ const Navbar = () => {
         </div>
 
         {isMobile && <>
-            <div className="search"><BiSearch size={50}/></div>
+            <button className="search" onClick={handleShowSearch}><BiSearch size={50}/></button>
         </>}
         {!isMobile && <>
             <ul>
-                <li>Support</li>
-                <li><Link to='/cart'>Cart</Link></li>
+                <li><button>Support</button></li>
+                <li><button><Link to='/cart'>Cart</Link></button></li>
             </ul>
         </>}
 
