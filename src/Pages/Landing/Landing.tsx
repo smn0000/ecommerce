@@ -10,7 +10,7 @@ const Landing = () => {
   const url = new URL('../../static/hero.jpg', import.meta.url).href
   return (
     <div className='landing'>
-      <motion.div className='hero' style={{y}}>
+      <motion.div className='hero' style={{y,}}>
         <p className='hero__text'>Discover music with us</p>
         <img src={url} alt="" loading='lazy' />
       </motion.div>

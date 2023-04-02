@@ -33,12 +33,17 @@ const Navbar = () => {
 
     useHideOnOutsideClick(navRef)
 
-
-
     useMotionValueEvent(scrollY, "change", (latest) => {
         if(showMobileMenu) return
-        if(latest<80) animate(navRef.current, {y:-latest, backgroundColor: 'rgba(255, 255, 255,0)', boxShadow: '0px 0px 0px rgba(255, 255, 255,0)'}, { ease: "linear", duration: 0 })
-        else if(prev>latest) animate(navRef.current, {y:0 ,backgroundColor: 'rgba(255,255,255,255)', boxShadow: '1px 1px 15px rgba(0,0,0,.5)'}, { ease: "linear",duration: .2 })
+        if(latest<80) {
+            animate(navRef.current, {y:-latest, backgroundColor: 'rgba(255, 255, 255,0)', boxShadow: '0px 0px 0px rgba(255, 255, 255,0)'}, { ease: "linear", duration: 0 })
+            setShowSearch(false)
+        }
+        else if(prev>latest) {
+            animate(navRef.current, {y:0 ,backgroundColor: 'rgba(255,255,255,255)', boxShadow: '1px 1px 15px rgba(0,0,0,.5)'}, { ease: "linear",duration: .2 })
+            setShowSearch(false)
+        }
+
         else animate(navRef.current, {y:-80,duration: .2, boxShadow:'1px 1px 15px rgba(0,0,0,.5)'},{ ease: "linear",duration: .2 })
 
         prev = latest

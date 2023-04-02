@@ -2,11 +2,13 @@ import { BiSearch } from 'react-icons/bi'
 import './styles.scss'
 import {motion} from 'framer-motion'
 import {useRef} from 'react'
+import { useMediaQuery } from 'usehooks-ts'
 
 const Search = ({handleClose}:{handleClose:React.Dispatch<boolean>}) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
 
+    const isMobileSmall = useMediaQuery('(max-width:768px)')
 
     const handleSubmit = (e:React.FormEvent) =>{
         e.preventDefault()
@@ -16,7 +18,7 @@ const Search = ({handleClose}:{handleClose:React.Dispatch<boolean>}) => {
 
     const search = {
         visible:{
-        height:70,
+        height: isMobileSmall ? 50 : 70,
         transition: {
             duration: .1,
         },
