@@ -4,9 +4,11 @@ import {motion} from 'framer-motion'
 import {useRef} from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 
+
 const Search = ({handleClose}:{handleClose:React.Dispatch<boolean>}) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
+
 
     const isMobileSmall = useMediaQuery('(max-width:768px)')
 

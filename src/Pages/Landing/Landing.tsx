@@ -1,6 +1,7 @@
 import './styles.scss'
 import {motion, useScroll, useTransform} from 'framer-motion'
 import Recommendations from '../../Components/Recommendations/Recommendations'
+import { Popular } from '../../Components/Popular/Popular'
 
 
 const Landing = () => {
@@ -14,6 +15,9 @@ const Landing = () => {
         <p className='hero__text'>Discover music with us</p>
         <img src={url} alt="" loading='lazy' />
       </motion.div>
+      <section>
+        <Popular/>
+      </section>
       <section>
         <Recommendations/>
       </section>

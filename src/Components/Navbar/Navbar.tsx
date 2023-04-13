@@ -1,37 +1,20 @@
 import './styles.scss'
-import {motion, useScroll, useMotionValueEvent, useAnimate, AnimatePresence, AnimationScope} from 'framer-motion'
+import {motion, useScroll, useMotionValueEvent, useAnimate, AnimatePresence, } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'usehooks-ts'
 import {BiMenu, BiSearch} from 'react-icons/bi'
-import {useState, useEffect, useRef} from 'react'
+import {useState, useRef} from 'react'
 import MobileMenu from '../MobileMenu/MobileMenu'
 import Search from '../Search/Search'
+import { useOnClickOutside } from '../../useOnClickOutside'
 
 const Navbar = () => {
-    function useHideOnOutsideClick(ref:AnimationScope<any>) {
-        useEffect(() => {
-          function handleClickOutside(event:any) {
-            if (ref.current && !ref.current.contains(event.target)) {
-              setShowMobileMenu(false);
-            }
-          }
-          document.addEventListener("mousedown", handleClickOutside);
-          document.addEventListener("touchmove", handleClickOutside);
-          return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("touchmove", handleClickOutside);
-          };
-        }, [ref]);
-      }
-
-
+    
 
  //Animation
     let {scrollY} = useScroll()
     const [navRef, animate] = useAnimate()
     let prev = 0
-
-    useHideOnOutsideClick(navRef)
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         if(showMobileMenu) return
@@ -43,7 +26,6 @@ const Navbar = () => {
             animate(navRef.current, {y:0 ,backgroundColor: 'rgba(255,255,255,255)', boxShadow: '1px 1px 15px rgba(0,0,0,.5)'}, { ease: "linear",duration: .2 })
             setShowSearch(false)
         }
-
         else animate(navRef.current, {y:-80,duration: .2, boxShadow:'1px 1px 15px rgba(0,0,0,.5)'},{ ease: "linear",duration: .2 })
 
         prev = latest
@@ -64,6 +46,12 @@ const Navbar = () => {
     const isMobile = useMediaQuery('(max-width:1024px)')
     const [showMobileMenu, setShowMobileMenu] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
+    const searchRef = useRef(null)
+
+    useOnClickOutside(navRef, ()=>{
+        setShowMobileMenu(false)
+        setShowSearch(false)
+    })
 
     // Disables scroll when menu is open
     const body = document.querySelector('body')
@@ -87,11 +75,11 @@ const Navbar = () => {
             {showSearch && <Search handleClose={setShowSearch}/>}
         </AnimatePresence>
         <AnimatePresence>
-            {showMobileMenu && isMobile && <MobileMenu/>}
+            {showMobileMenu && isMobile && <MobileMenu handleClose={handleShowMenu}/>}
         </AnimatePresence>
       
         {!isMobile &&<>
-            <ul>
+            <ul className='nav__left'>
                 <li><button>Menu</button></li>
                 <li><button onClick={() => setShowSearch(current => !current)}>Search</button> </li>
             </ul>
@@ -113,7 +101,7 @@ const Navbar = () => {
             <button className="search" onClick={handleShowSearch}><BiSearch size={50}/></button>
         </>}
         {!isMobile && <>
-            <ul>
+            <ul className='nav__right'>
                 <li><button>Support</button></li>
                 <li><button><Link to='/cart'>Cart</Link></button></li>
             </ul>

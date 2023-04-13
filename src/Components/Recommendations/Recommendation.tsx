@@ -10,11 +10,11 @@ const Recommendation = ({isRight}:{isRight:Boolean}) => {
 
   return (
     <div className='recommendation'>
-        <img src={img} className={`${isRight && 'right'}`} alt="" />
+        <img src={img} className={`${isRight ? 'right' : ''}`} alt="" />
         <div className='recommendation__info'>
           <div className='recommendation__top'>
             <p className='recommendation__title'>Title</p>
-            <p className={`recommendation__text ${isRight && 'right'}`}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores, aliquid minima quod odit modi distinctio provident assumenda quidem architecto, sint molestias voluptatibus ea dicta dolor placeat id eum mollitia quibusdam.</p>
+            <p className={`recommendation__text ${isRight ? 'right' : ''}`}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores, aliquid minima quod odit modi distinctio provident assumenda quidem architecto, sint molestias voluptatibus ea dicta dolor placeat id eum mollitia quibusdam.</p>
           </div>
 
           <div className='recommendation__bottom'>

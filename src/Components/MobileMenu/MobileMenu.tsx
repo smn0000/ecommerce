@@ -1,7 +1,8 @@
 import './styles.scss'
 import {motion} from 'framer-motion'
+import { Link } from 'react-router-dom'
 
-const MobileMenu = () => {
+const MobileMenu = ({handleClose}:{handleClose:React.Dispatch<boolean>}) => {
     const menu = {
         visible:{
           height:'calc(100vh + 80px)',
@@ -19,9 +20,10 @@ const MobileMenu = () => {
     }
   return (
     <motion.div className='mobile-menu' variants={menu} initial='hidden' exit='hidden' animate='visible'>
-        <motion.div>MobileMenu</motion.div>
-        <motion.div>MobileMenu</motion.div>
-        <motion.div>MobileMenu</motion.div>
+      <motion.ul className='mobile-menu__list'>
+        <motion.li onClick={() => handleClose(true)}><Link to='/cart'>Cart</Link></motion.li>
+        <motion.li onClick={() => handleClose(true)}>Support</motion.li>
+      </motion.ul>
     </motion.div>
   )
 }

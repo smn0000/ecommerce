@@ -12,6 +12,9 @@
     display: flex;
     align-items: center;
 
+    button{
+        cursor: pointer;
+    }
 
 }
 
@@ -29,11 +32,13 @@
         font-family: inherit;
         border-radius: 1rem;
         font-size: 2rem;
+        padding-left: 1rem;
     }
 
     @media (max-width:768px) {
         input{
             font-size: 1.2rem;
+        
         }
 
         svg{

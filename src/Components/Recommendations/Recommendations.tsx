@@ -6,6 +6,7 @@ const Recommendations = () => {
   return (
     <div className='recommendations__wrapper'>
         <div className='recommendations'>
+          <p className='recommendations__title'>Recommended</p>
             <Recommendation isRight={false}/>
             <Recommendation isRight={true}/>
             <Recommendation isRight={false}/>

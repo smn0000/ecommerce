@@ -1,8 +1,7 @@
 .recommendations__wrapper{
-    background-color: rgb(240, 235, 235);
+
     width: 100%;
-    padding: 2rem 15%;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    padding: 2rem 10%;
 
     @media (max-width:1024px) {
         padding: 2rem .5rem;
@@ -10,6 +9,7 @@
     
     @media (max-width:768px) {
         font-size: .8rem;
+        padding: 2rem 0;
 
         button{
             font-size: .7rem;
@@ -18,29 +18,40 @@
 }
 
 .recommendations{
-    background-color: rgb(222, 218, 241);
+/*     background-color: rgb(222, 218, 241); */
     padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
    
+}
+.recommendations__title{
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #00000073;
 }
 
 .recommendation{
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     position: relative;
-    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
-        
+    border-radius: 15px;
+    overflow: hidden;
+
     @media (max-width:768px) {
         flex-direction: column;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         
     }
     img{
         width: 35%;
         aspect-ratio: 1;
         left: 0;
+        
 
         &.right{
             order: 1;
@@ -51,7 +62,7 @@
 
         @media (max-width:768px) {
             width: 100%;
-            
+                        
         }
     }
 }
@@ -65,13 +76,10 @@
 }
 
 .recommendation__top{
-    flex:5;
+    flex:3;
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 2rem;
-
- 
 
 }
 
@@ -84,6 +92,12 @@
 
 }
 .recommendation__text{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
     &.right{
         text-align: right;
     }
@@ -91,15 +105,14 @@
 
 .recommendation__bottom{
     display: flex;
-    flex: 1;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(222, 218, 241);
     margin-top: 10px;
-    padding-inline: 2rem;
+    padding: 0px 2rem 0 .5rem;
 
     @media (max-width:768px) {
-        padding-inline: .5rem;;
+        padding-inline: .5rem;
     }
 }
 
@@ -107,6 +120,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px;
    
 }
 
