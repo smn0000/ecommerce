@@ -7,10 +7,10 @@ export function useOnClickOutside(ref:any, callback:any) {
           callback()
         }
       }
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
       document.addEventListener("touchmove", handleClickOutside);
       return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("click", handleClickOutside);
         document.removeEventListener("touchmove", handleClickOutside);
       };
     }, [ref]);

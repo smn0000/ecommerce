@@ -6,6 +6,7 @@ import { useMediaQuery } from "usehooks-ts"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
+import { useOnClickOutside } from "../../useOnClickOutside"
 
 const Search = ({ setClose }: { setClose: React.Dispatch<boolean> }) => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -23,7 +24,7 @@ const Search = ({ setClose }: { setClose: React.Dispatch<boolean> }) => {
           className="loading__icon"
           stroke="currentColor"
           fill="currentColor"
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 1024 1024"
           height="1em"
           width="1em"

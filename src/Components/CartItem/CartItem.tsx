@@ -1,24 +1,58 @@
-import './styles.scss'
-import {data} from '../../interfaces'
-import { v4 as uuidv4 } from 'uuid';
-import {BiTrash} from 'react-icons/bi'
+import React from "react"
+import "./styles.scss"
+import { cartData } from "../../interfaces"
+import { BiTrash, BiPlus, BiMinus } from "react-icons/bi"
 
-const CartItem = ({data}:{data:data}) => {
-    console.log(data)
-    
+const CartItem = ({
+  data,
+  handleRemoveItem,
+  handleIncrement,
+  handleDecrement,
+}: {
+  data: cartData
+  handleRemoveItem: (id: Number) => void
+  handleDecrement: (id: Number) => void
+  handleIncrement: (id: Number) => void
+}) => {
   return (
-    <div className='cart__item'>
-        <img className='cart__item__image' src={data.img}/>
-        <div className='cart__item__info'>
-          <p className='card__item__name'>{data.name}</p>
-          <p className='card__item__name'>{data.price}</p>
-          <p>{data.tags.map(el => <span key={uuidv4()}>{el}</span>)}</p>
+    <div className="cart__item">
+      <img src={`${data.img}`} alt="" />
+      <div className="cart__item__bottom">
+        <div className="cart__item__row">
+          <p className="cart__item__name">{data.name}</p>
+          <p className="cart__item__price">${data.price}</p>
         </div>
-        <div className='cart__item__side'>
-          <BiTrash/>
-          <p className='card__item__price'>{data.price}</p>
+        <div className="cart__item__row">
+          <div className="cart__item__quantity">
+            <button
+              onClick={() => {
+                if (data.quantity <= 0) return
+                handleDecrement(data.id)
+              }}
+            >
+              <BiMinus size={20} />
+            </button>
+            <p>{data.quantity}</p>
+            <button
+              onClick={() => {
+                if (data.quantity >= 10) return
+                handleIncrement(data.id)
+              }}
+            >
+              <BiPlus size={20} />
+            </button>
+          </div>
         </div>
-        
+        <div className="cart__item__row">
+          <button
+            className="cart__item__remove"
+            onClick={() => handleRemoveItem(data.id)}
+          >
+            <BiTrash size={25} />
+            <p>Remove</p>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

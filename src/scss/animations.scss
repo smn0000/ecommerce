@@ -1,0 +1,12 @@
+@keyframes spin {
+  from {
+    transform: rotateZ("0deg");
+  }
+  to {
+    transform: rotateZ("360deg");
+  }
+}
+
+.Toastify--animate-icon:has(.loading__icon) {
+  animation: spin 1s infinite;
+}

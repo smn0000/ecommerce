@@ -111,7 +111,9 @@ const Navbar = () => {
           <>
             <ul className="nav__left">
               <li>
-                <button>Menu</button>
+                <button>
+                  <Link to="/">Home</Link>
+                </button>
               </li>
               <li>
                 <button onClick={() => setShowSearch((current) => !current)}>
@@ -148,9 +150,6 @@ const Navbar = () => {
         {!isMobile && (
           <>
             <ul className="nav__right">
-              <li>
-                <button>Support</button>
-              </li>
               <li>
                 <button>
                   <Link to="/cart">Cart</Link>
