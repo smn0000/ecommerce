@@ -21,3 +21,12 @@
 
   height: 100%;
 }
+
+.cart__itemlist {
+  list-style: disc;
+  padding-block: 1rem;
+
+  li {
+    margin-left: 2rem;
+  }
+}

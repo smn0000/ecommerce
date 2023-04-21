@@ -10,7 +10,7 @@ const Cart = () => {
   const MOCK_DATA: cartData[] = [
     {
       id: 1,
-      name: "Title",
+      name: "Lorem Ipsum",
       img: imgUrl,
       price: 19.99,
       tags: ["HipHop", "Rap"],
@@ -21,7 +21,7 @@ const Cart = () => {
 
     {
       id: 2,
-      name: "Title",
+      name: "Lorem Ipsum",
       img: imgUrl,
       price: 19.99,
       tags: ["HipHop", "Rap"],
@@ -31,7 +31,7 @@ const Cart = () => {
     },
     {
       id: 3,
-      name: "Title",
+      name: "Lorem Ipsum",
       img: imgUrl,
       price: 19.99,
       tags: ["HipHop", "Rap"],
@@ -97,10 +97,10 @@ const Cart = () => {
       </div>
       <div className="cart__pay">
         <div>Total:{formatter.format(total)}</div>
-        <ul>
+        <ul className="cart__itemlist">
           Items:
           {cartItems.map((item) => (
-            <li>
+            <li key={item.id}>
               <span>{item.name} </span>
               <span>{item.price} x </span>
               <span>{item.quantity} </span>

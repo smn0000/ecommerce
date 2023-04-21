@@ -2,6 +2,7 @@ import React from "react"
 import "./styles.scss"
 import { cartData } from "../../interfaces"
 import { BiTrash, BiPlus, BiMinus } from "react-icons/bi"
+import Button from "../Button/Button"
 
 const CartItem = ({
   data,
@@ -44,13 +45,19 @@ const CartItem = ({
           </div>
         </div>
         <div className="cart__item__row">
-          <button
+          <Button
+            onClick={() => handleRemoveItem(data.id)}
+            icon={<BiTrash size={30} color="#f20" />}
+            text={"Remove"}
+            color="black"
+          />
+          {/*           <button
             className="cart__item__remove"
             onClick={() => handleRemoveItem(data.id)}
           >
             <BiTrash size={25} />
             <p>Remove</p>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
