@@ -5,8 +5,6 @@ import { useRef } from "react"
 import { useMediaQuery } from "usehooks-ts"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { AiOutlineLoading3Quarters } from "react-icons/ai"
-import { useOnClickOutside } from "../../useOnClickOutside"
 
 const Search = ({ setClose }: { setClose: React.Dispatch<boolean> }) => {
   const inputRef = useRef<HTMLInputElement>(null)

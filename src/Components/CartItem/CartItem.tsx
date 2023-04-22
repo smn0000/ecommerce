@@ -3,6 +3,7 @@ import "./styles.scss"
 import { cartData } from "../../interfaces"
 import { BiTrash, BiPlus, BiMinus } from "react-icons/bi"
 import Button from "../Button/Button"
+import { motion } from "framer-motion"
 
 const CartItem = ({
   data,
@@ -25,23 +26,27 @@ const CartItem = ({
         </div>
         <div className="cart__item__row">
           <div className="cart__item__quantity">
-            <button
+            <motion.button
+              whileTap={{ scale: 1.1 }}
+              transition={{ duration: 0.125 }}
               onClick={() => {
                 if (data.quantity <= 0) return
                 handleDecrement(data.id)
               }}
             >
               <BiMinus size={20} />
-            </button>
+            </motion.button>
             <p>{data.quantity}</p>
-            <button
+            <motion.button
+              whileTap={{ scale: 1.1 }}
+              transition={{ duration: 0.125 }}
               onClick={() => {
                 if (data.quantity >= 10) return
                 handleIncrement(data.id)
               }}
             >
               <BiPlus size={20} />
-            </button>
+            </motion.button>
           </div>
         </div>
         <div className="cart__item__row">
@@ -51,13 +56,6 @@ const CartItem = ({
             text={"Remove"}
             color="black"
           />
-          {/*           <button
-            className="cart__item__remove"
-            onClick={() => handleRemoveItem(data.id)}
-          >
-            <BiTrash size={25} />
-            <p>Remove</p>
-          </button> */}
         </div>
       </div>
     </div>

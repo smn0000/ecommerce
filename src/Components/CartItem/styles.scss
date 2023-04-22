@@ -15,7 +15,7 @@
 
   button {
     cursor: pointer;
-    border: 1px solid black;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,14 +62,5 @@
   &:first-of-type {
     justify-content: space-between;
     font-size: 1.3rem;
-  }
-}
-
-.cart__item__remove {
-  font-size: 1.5rem;
-  border-radius: 0.8rem;
-  padding-inline: 1rem;
-  svg {
-    fill: red;
   }
 }

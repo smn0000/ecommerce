@@ -1,7 +1,9 @@
 .button {
   border-radius: 0.5rem;
   cursor: pointer;
-  /*   flex: 1; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   color: white;
   font-size: 1rem;
