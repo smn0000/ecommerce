@@ -1,7 +1,7 @@
 import "./styles.scss"
 import { cartData } from "../../interfaces"
 import { useEffect, useState } from "react"
-import CartItem from "../../Components/Cartitem/CartItem"
+import CartItem from "../../Components/CartItem/CartItem"
 import { toast } from "react-toastify"
 import Button from "../../Components/Button/Button"
 import { BiCart } from "react-icons/bi"
