@@ -5,6 +5,7 @@ import { data } from "../../interfaces"
 
 export const Popular = () => {
   const MOCKDATA: data = {
+    id: 1,
     name: "Lorem",
     img: new URL("../../static/album2.jpeg", import.meta.url).href,
     price: 10.99,

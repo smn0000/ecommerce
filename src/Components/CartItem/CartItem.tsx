@@ -1,4 +1,3 @@
-import React from "react"
 import "./styles.scss"
 import { cartData } from "../../interfaces"
 import { BiTrash, BiPlus, BiMinus } from "react-icons/bi"
